@@ -1,7 +1,13 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage("so-cart") || []; // Lets set an empty array if the cart is null
+  if (cartItems.length === 0) {
+    //we check if there is items in the cart to avoid map error
+    document.querySelector(".product-list").innerHTML =
+      "<p>Your cart is currently empty</p>";
+    return;
+  }
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
