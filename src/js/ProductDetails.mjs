@@ -19,6 +19,8 @@ export default class ProductDetails {
     window.dispatchEvent(new Event("cartUpdated"));
   }
 
+  
+
   renderProductDetails() {
     const productContainer = document.getElementById("product-detail");
 
