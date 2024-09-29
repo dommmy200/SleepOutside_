@@ -3,15 +3,21 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 // Función para renderizar los contenidos del carrito
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
+  const productList = document.querySelector(".product-list");
+
+  // Mostrar un mensaje si el carrito está vacío
   if (cartItems.length === 0) {
-    document.querySelector(".product-list").innerHTML =
-      "<p>Your cart is currently empty</p>";
+    productList.innerHTML = "<p>Your cart is currently empty</p>";
+    document.querySelector(".cart-footer").classList.add("hide"); // Ocultar el total si el carrito está vacío
     return;
   }
 
   // Mapear los items del carrito y generar el HTML
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  productList.innerHTML = htmlItems.join("");
+
+  // Calcular y mostrar el total del carrito
+  calculateTotal(cartItems);
 
   // Añadir oyentes a los botones de eliminar después de renderizar los items
   addRemoveButtonEventListeners();
@@ -30,12 +36,34 @@ function cartItemTemplate(item) {
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${colorName}</p>
-    <p class="cart-card__quantity">qty: 1</p>
+    <p class="cart-card__quantity">qty: ${item.Quantity || 1}</p> <!-- Cambiar la cantidad si está disponible -->
     <p class="cart-card__price">$${item.FinalPrice}</p>
     <button class="cart-card__remove" data-id="${item.Id}">X</button> 
   </li>`;
 
   return newItem;
+}
+
+// Función para calcular y mostrar el total del carrito
+function calculateTotal(cartItems) {
+  const totalElement = document.getElementById('total-amount');
+  const cartFooter = document.querySelector('.cart-footer');
+
+  // Inicializar total
+  let total = 0;
+
+  // Calcular el total de los artículos
+  cartItems.forEach(item => {
+    total += item.FinalPrice * (item.Quantity || 1); // Asumiendo que cada item tiene 'FinalPrice' y 'Quantity'
+  });
+
+  // Mostrar el total
+  if (total > 0) {
+    totalElement.innerText = total.toFixed(2); // Muestra el total con 2 decimales
+    cartFooter.classList.remove('hide'); // Muestra el footer del carrito
+  } else {
+    cartFooter.classList.add('hide'); // Oculta el footer si no hay artículos
+  }
 }
 
 // Función para añadir oyentes de eventos a los botones de eliminación

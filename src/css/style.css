@@ -288,6 +288,36 @@ button {
   grid-column: 3;
 }
 
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  /* Espaciado entre el texto y cualquier otro elemento que agregues */
+  align-items: center;
+  /* Centrar verticalmente el contenido */
+  padding: 10px;
+  background-color: #f9f9f9;
+  /* Color de fondo ligero */
+  border-top: 1px solid #ccc;
+  /* Línea superior para separación */
+  margin-top: 20px;
+  /* Margen superior para separación del contenido */
+}
+
+.cart-total {
+  font-size: 1.2em;
+  /* Tamaño de fuente para el total */
+  font-weight: bold;
+  /* Negrita para destacar el total */
+  color: #333;
+  /* Color del texto */
+}
+
+.hide {
+  display: none;
+  /* Ocultar el elemento cuando sea necesario */
+}
+
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
