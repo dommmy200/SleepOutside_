@@ -13,23 +13,28 @@
   --small-font: 0.8em;
   --large-font: 1.2em;
 }
+
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   font-family: var(--font-body);
   font-size: var(--font-base);
   color: var(--dark-grey);
 }
+
 img {
   max-width: 100%;
 }
+
 header {
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
 }
+
 .logo {
   line-height: 60px;
   width: 245px;
@@ -39,23 +44,28 @@ header {
   text-align: right;
   font-family: var(--font-headline);
 }
+
 .logo img {
   width: 60px;
   height: 60px;
 }
+
 .logo a {
   text-decoration: none;
   color: var(--font-body);
 }
+
 .hero {
   position: relative;
 }
+
 .hero .logo {
   position: absolute;
   left: calc(50% - 60px);
   bottom: -10px;
   background-color: white;
 }
+
 .logo--square {
   font-size: var(--small-font);
   width: 110px;
@@ -68,14 +78,17 @@ header {
   align-items: center;
   line-height: 1;
 }
+
 .logo--square img {
   width: 90px;
   height: 90px;
   margin-top: -1.3em;
 }
-.logo--square > div {
+
+.logo--square>div {
   margin-top: -1.7em;
 }
+
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
@@ -91,9 +104,11 @@ button {
   font-size: var(--large-font);
   cursor: pointer;
 }
+
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
+
 /* End utility classes */
 
 /* Cart icon styles */
@@ -106,8 +121,26 @@ button {
 .cart svg {
   width: 25px;
 }
+
 .cart:hover svg {
   fill: gray;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 6px;
+  right: -7px;
+  background-color: #f9d73f;
+  color: #000;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 20px;
+  height: 20px;
 }
 
 /* End cart icon styles */
@@ -119,9 +152,11 @@ button {
   max-width: 600px;
   margin: auto;
 }
+
 .products {
   padding: 0.5em;
 }
+
 .product-list {
   display: flex;
   flex-flow: row wrap;
@@ -129,10 +164,12 @@ button {
   list-style-type: none;
   padding: 0;
 }
+
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
@@ -141,6 +178,7 @@ button {
   border: 1px solid var(--light-grey);
   max-width: 250px;
 }
+
 .product-card h2,
 .product-card h3,
 .product-card p {
@@ -154,6 +192,7 @@ button {
 .card__name {
   font-size: 1em;
 }
+
 /* End product list card */
 
 .product-detail {
@@ -164,6 +203,51 @@ button {
 
 .product-detail img {
   width: 100%;
+}
+
+.product-card__original-price {
+  text-decoration: line-through;
+  color: #f00;
+  /* Rojo para el precio original tachado */
+}
+
+.product-card__discount-price {
+  color: rgb(0, 0, 255);
+  /* Azul para el precio con descuento */
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.cart-card__remove {
+  grid-row: 1;
+  grid-column: 4;
+  margin-right: 0;
+}
+
+.cart-card__remove {
+  cursor: pointer;
+  /* Cambia el cursor a una mano para indicar que es clicable */
+  font-size: 1.5em;
+  /* Aumenta el tamaño de la "X" */
+  color: red;
+  /* Le da el color principal de tu tema */
+  background: none;
+  /* Elimina el fondo por defecto si es necesario */
+  border: none;
+  /* Elimina cualquier borde por defecto */
+  position: relative;
+}
+
+.cart-card__remove:hover {
+  color: #ff0000;
+  /* Cambia el color a rojo cuando se pasa el ratón */
+  transform: scale(1.2);
+  /* Efecto de agrandamiento al pasar el ratón */
+}
+
+.cart-card__remove:focus {
+  outline: none;
+  /* Elimina el borde de enfoque cuando se selecciona */
 }
 
 /* Start cart list card styles */
@@ -179,9 +263,11 @@ button {
   grid-row: 1/3;
   grid-column: 1;
 }
+
 .cart-card p {
   margin-top: 0;
 }
+
 .cart-card .card__name {
   grid-row: 1;
   grid-column: 2;
@@ -207,9 +293,11 @@ button {
     max-width: 1080px;
     margin: auto;
   }
+
   .mission {
     font-size: 1.2em;
   }
+
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
