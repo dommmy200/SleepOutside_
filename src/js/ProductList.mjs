@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderWithTemplate } from "./utils.mjs";
 
 // Template function to generate product card HTML using template literals for now
 function productCardTemplate(product) {
@@ -47,6 +47,6 @@ export default class ProductListing {
   // This is the method to render the product list using the utility function
   renderList(products) {
     // Using the utility function with the productCardTemplate and the listElement
-    renderListWithTemplate(productCardTemplate, this.listElement, products, "afterbegin", true);
+    renderWithTemplate(productCardTemplate, this.listElement, products, "afterbegin", true);
   }
 }
