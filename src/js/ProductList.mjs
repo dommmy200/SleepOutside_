@@ -11,8 +11,8 @@ function productCardTemplate(product) {
         <h3 class="card__brand">${product.NameWithoutBrand}</h3>
         <h2 class="card__name">${product.Name}</h2>
         <p class="product-card__price">
-          ${isDiscounted ? `<span class="product-card__original-price">$${product.SuggestedRetailPrice.toFixed(2)}</span>` : ''}
-          <span class="${isDiscounted ? 'product-card__discount-price' : ''}">$${product.FinalPrice.toFixed(2)}</span>
+          ${isDiscounted ? `<span class="product-card__original-price">$${product.SuggestedRetailPrice.toFixed(2)}</span>` : ""}
+          <span class="${isDiscounted ? "product-card__discount-price" : ""}">$${product.FinalPrice.toFixed(2)}</span>
         </p>
       </a>
     </li>`;
@@ -32,7 +32,7 @@ export default class ProductListing {
       const filteredProducts = this.filterProducts(products); // Filter products to the desired four
       this.renderList(filteredProducts); // Render the filtered product list
     } catch (error) {
-      console.error('Error initializing ProductListing:', error);
+      //console.error("Error initializing ProductListing:", error);
     }
   }
 

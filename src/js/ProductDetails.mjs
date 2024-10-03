@@ -39,9 +39,9 @@ export default class ProductDetails {
         
         <p>
           <!-- Show original price crossed out if there's a discount -->
-          ${isDiscounted ? `<span class="product-card__original-price">$${this.product.SuggestedRetailPrice.toFixed(2)}</span>` : ''}
+          ${isDiscounted ? `<span class="product-card__original-price">$${this.product.SuggestedRetailPrice.toFixed(2)}</span>` : ""}
           <!-- Show the discounted price -->
-          <span class="${isDiscounted ? 'product-card__discount-price' : ''}">$${this.product.FinalPrice.toFixed(2)}</span>
+          <span class="${isDiscounted ? "product-card__discount-price" : ""}">$${this.product.FinalPrice.toFixed(2)}</span>
         </p>
         
         <button id="addToCart">Add to Cart</button>

@@ -145,6 +145,82 @@ button {
 
 /* End cart icon styles */
 
+
+/* main index page grid boxes */
+
+/* Grid layout for the category boxes */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Style for individual category boxes */
+.category-box {
+  text-align: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Styling the category box link */
+.category-box a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Category icon styling */
+.category-box img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 10px;
+}
+
+/* Styling the category title */
+.category-box h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 10px;
+  transition: color 0.3s;
+}
+
+/* Hover effect for the category box */
+.category-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for the category text */
+.category-box:hover h3 {
+  color: #d9cb4f;
+}
+
+/* Responsive behavior for mobile */
+@media (max-width: 600px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .category-box {
+    padding: 15px;
+  }
+
+  .category-box h3 {
+    font-size: 1rem;
+  }
+}
+
+
+
 .mission {
   padding: 0 0.5em;
   /* margin: 0.5em 0; */
