@@ -48,11 +48,11 @@ export async function loadTemplate(path) {
     }
 
     const text = await response.text(); // Obtenemos el contenido del HTML como texto
-    const template = document.createElement('template'); // Creamos un elemento <template>
+    const template = document.createElement("template"); // Creamos un elemento <template>
     template.innerHTML = text; // Insertamos el HTML cargado en el template
     return template; // Devolvemos el template con el HTML cargado
   } catch (error) {
-    console.error('Error al cargar la plantilla:', error);
+    //console.error("Error al cargar la plantilla:", error);
     return null; // Retorna null en caso de error
   }
 }
@@ -61,8 +61,8 @@ export async function loadTemplate(path) {
 export async function loadHeaderFooter() {
   try {
     // Cargamos las plantillas de encabezado y pie de página
-    const headerTemplate = await loadTemplate('/partials/header.html'); // Actualiza con la ruta correcta
-    const footerTemplate = await loadTemplate('/partials/footer.html'); // Actualiza con la ruta correcta
+    const headerTemplate = await loadTemplate("/partials/header.html"); // Actualiza con la ruta correcta
+    const footerTemplate = await loadTemplate("/partials/footer.html"); // Actualiza con la ruta correcta
 
     // Aseguramos que las plantillas fueron cargadas correctamente
     if (headerTemplate && footerTemplate) {
@@ -71,13 +71,13 @@ export async function loadHeaderFooter() {
       const footerElement = footerTemplate.content.firstElementChild; // Suponiendo que el primer hijo es el footer
 
       // Renderizamos el header y el footer en sus respectivos elementos en el DOM
-      renderWithTemplate(() => headerElement.outerHTML, document.querySelector('header'), null);
-      renderWithTemplate(() => footerElement.outerHTML, document.querySelector('footer'), null);
+      renderWithTemplate(() => headerElement.outerHTML, document.querySelector("header"), null);
+      renderWithTemplate(() => footerElement.outerHTML, document.querySelector("footer"), null);
     } else {
-      console.error('Error: No se pudieron cargar las plantillas de header o footer.');
+      //console.error("Error: No se pudieron cargar las plantillas de header o footer.");
     }
   } catch (error) {
-    console.error('Error al cargar header o footer:', error);
+    //console.error("Error al cargar header o footer:", error);
   }
 }
 

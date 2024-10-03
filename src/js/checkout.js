@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from './utils.mjs';
+import { loadHeaderFooter } from "./utils.mjs";
 
 async function init() {
     // Load the header and footer
