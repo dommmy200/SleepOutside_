@@ -6,6 +6,11 @@ loadHeaderFooter();
 
 const category = getParams("category");
 
+// Display the category name
+const categoryNameElement = document.getElementById("category-name");
+categoryNameElement.innerText = "Top Products: " + category.charAt(0).toUpperCase() + category.slice(1); // Capitalize first letter
+
+
 // Create an instance of ProductData with the category 'tents'
 const dataSource = new ProductData();
 
