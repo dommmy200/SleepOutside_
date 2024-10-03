@@ -9,22 +9,32 @@ export default class ProductDetails {
   async init() {
     try {
       this.product = await this.dataSource.findProductById(this.productId);
-      console.log("Fetched product details:", this.product); // Log the fetched product details
+      //console.log("Fetched product details:", this.product); // Log the fetched product details
       if (this.product) {
         this.renderProductDetails(); 
       } else {
-        console.error("Product not found.");
+        //console.error("Product not found.");
       }
     } catch (error) {
-      console.error("Error fetching product:", error); 
+      //console.error("Error fetching product:", error); 
     }
   }
 
   addToCart() {
     const cartItems = JSON.parse(localStorage.getItem("so-cart")) || []; // Get current cart or initialize an empty array
-    cartItems.push(this.product); // Add the current product to cart
-    localStorage.setItem("so-cart", JSON.stringify(cartItems)); // Save updated cart
-
+    const existingProductIndex = cartItems.findIndex(item => item.Result.Id === this.product.Result.Id); // Check if product exists
+  
+    if (existingProductIndex !== -1) {
+      // Product already exists in the cart, increase its quantity
+      cartItems[existingProductIndex].Result.Quantity = (cartItems[existingProductIndex].Result.Quantity || 1) + 1;
+    } else {
+      // If product does not exist, add it to the cart
+      this.product.Result.Quantity = 1;
+      cartItems.push(this.product); 
+    }
+  
+    localStorage.setItem("so-cart", JSON.stringify(cartItems));
+  
     // Dispatch a custom event to notify the cart count has been updated
     window.dispatchEvent(new Event("cartUpdated"));
   }
