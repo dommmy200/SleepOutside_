@@ -24,20 +24,29 @@ export default class ProductListing {
     this.category = category;
     this.dataSource = dataSource;
     this.listElement = listElement;
+    this.product = []; //Guardar la lista de productso para ordenarlos
   }
 
   async init() {
     try {
-      // Fetch products using the category from the URL
       const products = await this.dataSource.getData(this.category);
-      //console.log(products)
-      this.renderList(products); // Render the product list
+      this.products = products; // Guardar productos en una variable de la clase
+      this.renderList(products); // Renderizar la lista
     } catch (error) {
-      //console.error("Error initializing ProductListing:", error);
+      console.error("Error initializing ProductListing:", error);
     }
-    
   }
 
+  // Método para ordenar la lista de productos por nombre o precio
+  sortList(criteria) {
+    let sortedList;
+    if (criteria === "name") {
+      sortedList = [...this.products].sort((a, b) => a.Name.localeCompare(b.Name));
+    } else if (criteria === "price") {
+      sortedList = [...this.products].sort((a, b) => a.FinalPrice - b.FinalPrice);
+    }
+    return sortedList;
+  }
   // // Filter function for the list of products to show only the four products we need for now
   // filterProducts(products) {
   //   const idsToShow = ["880RR", "985RF", "985PR", "344YJ"]; // I manually replaced with actual IDs from your tents.json
