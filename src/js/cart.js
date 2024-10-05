@@ -26,7 +26,10 @@ function renderCartContents() {
 // Function to generate the HTML template for each cart item
 function cartItemTemplate(item) {
   if (!item) return "";
-  const colorName = item.Result.Colors && item.Result.Colors.length > 0 ? item.Result.Colors[0].ColorName : "Color not available";
+  const colorName =
+    item.Result.Colors && item.Result.Colors.length > 0
+      ? item.Result.Colors[0].ColorName
+      : "Color not available";
 
   const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
@@ -53,7 +56,7 @@ function calculateTotal(cartItems) {
   let total = 0;
 
   // Calculate the total price of the items
-  cartItems.forEach(item => {
+  cartItems.forEach((item) => {
     total += item.Result.FinalPrice * (item.Result.Quantity || 1); // Assuming each item has 'FinalPrice' and 'Quantity'
   });
 
