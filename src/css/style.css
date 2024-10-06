@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -332,6 +332,7 @@ button {
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+  width: 100%;
 }
 
 .cart-card__image {
@@ -409,6 +410,21 @@ button {
   font-size: 12px;
   transition: border-color 0.3s;
 }
+
+.qtd-button {
+  margin-top: 15px;
+  font-size: 12px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #000000;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.qtd-button:hover {
+  background-color: #ddd;
+}
+
 
 @media screen and (min-width: 500px) {
   body {
