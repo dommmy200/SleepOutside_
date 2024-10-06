@@ -55,6 +55,12 @@ export default class ProductListing {
   //   return products.filter((product) => idsToShow.includes(product.Id));
   // }
 
+  filterList(query) {
+    return this.products.filter(product =>
+      product.Name.toLowerCase().includes(query)
+    );
+  }
+
   // This is the method to render the product list using the utility function
   renderList(products) {
     // Using the utility function with the productCardTemplate and the listElement
