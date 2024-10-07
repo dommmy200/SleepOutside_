@@ -30,23 +30,22 @@ export default class ShoppingCart {
             : "Color not available";
 
         return `
-      <li class="cart-card divider">
-        <a href="#" class="cart-card__image">
-          <img src="${item.Result.Images.PrimarySmall}" alt="${item.Result.Name}" />
-        </a>
-        <a href="#">
-          <h2 class="card__name">${item.Result.Name}</h2>
-        </a>
-        <p class="cart-card__color">${colorName}</p>
-        <div class="qtd-container">
-          <button class="qtd-button" data-id="${item.Result.Id}" data-action="increase">+</button>
-          <p class="cart-card__quantity">qty: ${item.Result.Quantity || 1}</p>
-          <button class="qtd-button" data-id="${item.Result.Id}" data-action="decrease">-</button>
-        </div>
-        <p class="cart-card__price">$${(item.Result.FinalPrice * (item.Result.Quantity || 1)).toFixed(2)}</p>
-        <button class="cart-card__remove" data-id="${item.Result.Id}">X</button>
-      </li>
-    `;
+            <li class="cart-card divider">
+                <a href="#" class="cart-card__image">
+                <img src="${item.Result.Images.PrimarySmall}" alt="${item.Result.Name}" />
+                </a>
+                <a href="#">
+                <h2 class="card__name">${item.Result.Name}</h2>
+                </a>
+                <p class="cart-card__color">${colorName}</p>
+                <div class="qtd-container">
+                <button class="qtd-button" data-id="${item.Result.Id}" data-action="increase">+</button>
+                <p class="cart-card__quantity">qty: ${item.Result.Quantity || 1}</p>
+                <button class="qtd-button" data-id="${item.Result.Id}" data-action="decrease">-</button>
+                </div>
+                <p class="cart-card__price">$${(item.Result.FinalPrice * (item.Result.Quantity || 1)).toFixed(2)}</p>
+                <button class="cart-card__remove" data-id="${item.Result.Id}">X</button>
+            </li>`;
     }
 
     calculateTotal() {
