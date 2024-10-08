@@ -4,7 +4,7 @@ export default class Alert {
     this.backgroundColor = backgroundColor;
   }
 
-  render(targetElement = document.body) {
+  render() {
     // Create a new div element for the alert
     const alertElement = document.createElement("div");
     alertElement.textContent = this.message;
