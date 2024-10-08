@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "message": "New products available!",
+    "backgroundColor": "#ffef45"
+  },
+  {
+    "id": 2,
+    "message": "Flash sale starts at 3PM!",
+    "backgroundColor": "#f44564"
+  }
+]

@@ -1,6 +1,7 @@
 import ProductData from "./ProductData.mjs";
 import ProductListing from "./ProductList.mjs";
 import { loadHeaderFooter, getParams } from "./utils.mjs";
+import Alert from "./alert";
 
 loadHeaderFooter();
 
@@ -22,3 +23,10 @@ const productListing = new ProductListing(category, dataSource, listElement);
 
 // Initialize the ProductListing to fetch data and render the product list
 productListing.init();
+
+fetch("/json/alertmessage.json")
+  .then((response) => response.json())
+  .then((data) => {
+    Alert.createAlertsFromJson(data);
+  })
+  .catch((error) => console.error("Error Loading Alerts:", error));
