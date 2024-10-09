@@ -2,11 +2,11 @@
   {
     "id": 1,
     "message": "New products available!",
-    "backgroundColor": "#ffef45"
+    "backgroundColor": "#ffef75"
   },
   {
     "id": 2,
     "message": "Flash sale starts at 3PM!",
-    "backgroundColor": "#f44564"
+    "backgroundColor": "#f44764"
   }
 ]
