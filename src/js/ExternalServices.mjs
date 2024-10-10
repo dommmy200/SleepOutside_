@@ -8,7 +8,7 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   // Removed the category and path from the constructor, as it’s no longer needed
   constructor() {}
 
@@ -16,12 +16,30 @@ export default class ProductData {
   async getData(category) {
     const response = await fetch(baseURL + `products/search/${category}`);
     const data = await convertToJson(response);
-    return data.Result;  
+    return data.Result;
   }
 
   async findProductById(Id) {
     const response = await fetch(`${baseURL}product/${Id}`);
     const product = await convertToJson(response);
-    return product; 
+    return product;
+  }
+
+  async checkout(orderData) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(orderData)
+    };
+
+    try {
+      const response = await fetch(`${baseURL}checkout`, options);
+      const data = await convertToJson(response);
+      return data; 
+    } catch (error) {
+      throw new Error("Failed to submit order: " + error.message);
+    }
   }
 }

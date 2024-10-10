@@ -1,4 +1,4 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductListing from "./ProductList.mjs";
 import { loadHeaderFooter, getParams } from "./utils.mjs";
 import Alert from "./alert";
@@ -12,8 +12,8 @@ const categoryNameElement = document.getElementById("category-name");
 categoryNameElement.innerText =
   "Top Products: " + category.charAt(0).toUpperCase() + category.slice(1); // Capitalize first letter
 
-// Create an instance of ProductData with the category 'tents'
-const dataSource = new ProductData();
+// Create an instance of ExternalServices with the category 'tents'
+const dataSource = new ExternalServices();
 
 // Select the HTML element where the product list will be rendered
 const listElement = document.querySelector(".product-list");

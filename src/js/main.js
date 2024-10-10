@@ -1,9 +1,9 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductListing from "./ProductList.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
-// Create an instance of ProductData with the category 'tents'
-const dataSource = new ProductData("tents");
+// Create an instance of ExternalServices with the category 'tents'
+const dataSource = new ExternalServices("tents");
 
 // Select the HTML element where the product list will be rendered
 const listElement = document.getElementById("product-list");
