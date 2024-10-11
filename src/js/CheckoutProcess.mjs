@@ -101,9 +101,9 @@ export default class CheckoutProcess {
     const externalServices = new ExternalServices();
     try {
       const response = await externalServices.checkout(orderData); // Submit the order
-      console.log("Order Submitted:", response);
+      return response;
     } catch (error) {
-      alert("Error submitting order:", error)
+      throw new Error("Order submission failed", error);
     }
   }
 

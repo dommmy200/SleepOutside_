@@ -13,10 +13,10 @@ export default class ProductDetails {
       if (this.product) {
         this.renderProductDetails(); 
       } else {
-        //console.error("Product not found.");
+        throw new Error("product not found")
       }
     } catch (error) {
-      //console.error("Error fetching product:", error); 
+      throw new Error("Error fetching product:", error)
     }
   }
 
@@ -34,6 +34,7 @@ export default class ProductDetails {
     }
   
     localStorage.setItem("so-cart", JSON.stringify(cartItems));
+    alert("Item added to cart");
   
     // Dispatch a custom event to notify the cart count has been updated
     window.dispatchEvent(new Event("cartUpdated"));

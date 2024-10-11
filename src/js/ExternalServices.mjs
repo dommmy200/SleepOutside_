@@ -1,10 +1,16 @@
+/* eslint-disable no-console */
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
-function convertToJson(res) {
+async function convertToJson(res) {
+  const jsonResposne = await res.json();
+
   if (res.ok) {
-    return res.json();
+    return jsonResposne
   } else {
-    throw new Error("Bad Response");
+    throw {
+      name: "serviceError",
+      message: jsonResposne
+    };
   }
 }
 
@@ -37,9 +43,13 @@ export default class ExternalServices {
     try {
       const response = await fetch(`${baseURL}checkout`, options);
       const data = await convertToJson(response);
-      return data; 
+      return data;
     } catch (error) {
-      throw new Error("Failed to submit order: " + error.message);
+      if (error.name === "servicesError") {
+        console.error("Error submitting order:", error.message); 
+      } else {
+        console.error("Unknown error occurred:", error);
+      }
     }
   }
 }

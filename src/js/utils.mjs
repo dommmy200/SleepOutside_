@@ -20,6 +20,35 @@ export function getParams(param) {
   return urlParams.get(param); // Return the parameter value
 }
 
+
+export function alertMessage(message, scroll = true) {
+
+  const alert = document.createElement("div");
+  
+  // Add a class to style the alert
+  alert.classList.add("alert");
+  
+  // Set the contents: message and a close button (X)
+  alert.innerHTML = `
+    <span class="alert-message">${message}</span>
+    <button class="alert-close-btn">&times;</button>
+  `;
+  
+  alert.querySelector(".alert-close-btn").addEventListener("click", function() {
+    alert.remove();
+  });
+
+  // Adding the alert to the top of the main element
+  const main = document.querySelector(".showerror");
+  main.prepend(alert);
+
+  // scroll to the top of the window to make sure the user sees the alert
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+}
+
+
 // Función para renderizar usando una plantilla y un elemento padre, manejando datos estáticos y callback opcional
 export function renderWithTemplate(templateFn, parentElement, list = null, position = "afterbegin", clear = false, callback) {
   // Limpia el contenido del elemento padre si se especifica 'clear'
