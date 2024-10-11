@@ -1,9 +1,8 @@
 import ExternalServices from "./ExternalServices.mjs";
 import ProductListing from "./ProductList.mjs";
-import { loadHeaderFooter, getParams } from "./utils.mjs";
+import { getParams } from "./utils.mjs";
 import Alert from "./alert";
 
-loadHeaderFooter();
 
 const category = getParams("category");
 

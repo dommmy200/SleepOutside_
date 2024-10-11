@@ -1,3 +1,5 @@
+import { loadHeaderFooter } from "./utils.mjs";
+
 function updateCartCount() {
     // Retrieve cart items from localStorage
     const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
@@ -14,3 +16,9 @@ updateCartCount();
 
 // Listen for custom event to update cart count dynamically when the addToCart btn is clicked
 window.addEventListener("cartUpdated", updateCartCount);
+
+async function init() {
+  await loadHeaderFooter();
+}
+
+init();

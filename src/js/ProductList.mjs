@@ -33,7 +33,8 @@ export default class ProductListing {
       this.products = products; // Guardar productos en una variable de la clase
       this.renderList(products); // Renderizar la lista
     } catch (error) {
-      console.error("Error initializing ProductListing:", error);
+      //console.error("Error initializing ProductListing:", error);
+      throw new Error("Error initializing ProductListing:", error)
     }
   }
 
@@ -47,13 +48,6 @@ export default class ProductListing {
     }
     return sortedList;
   }
-  // // Filter function for the list of products to show only the four products we need for now
-  // filterProducts(products) {
-  //   const idsToShow = ["880RR", "985RF", "985PR", "344YJ"]; // I manually replaced with actual IDs from your tents.json
-
-  //   // Filter the products array to only include the items with the specified IDs
-  //   return products.filter((product) => idsToShow.includes(product.Id));
-  // }
 
   filterList(query) {
     return this.products.filter(product =>

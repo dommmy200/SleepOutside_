@@ -1,16 +1,6 @@
-import { loadHeaderFooter, alertMessage } from "./utils.mjs";
+import { alertMessage } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
-async function init() {
-  // Load the header and footer
-  await loadHeaderFooter();
-  // Aquí puedes agregar cualquier otro código específico para la página de checkout
-}
-
-// Call the init function
-init();
-
-// checkout.js
 
 // Initialize the CheckoutProcess with key 'so-cart' and output selectors
 const checkout = new CheckoutProcess("so-cart", {

@@ -17,6 +17,7 @@ export default class CheckoutProcess {
     this.list = getLocalStorage(this.key) || []; // Load the cart items from localStorage
     this.calculateItemSummary(); // Calculate and display the subtotal on page load
   }
+  
 
   // Calculate and display the item subtotal
   calculateItemSummary() {
@@ -24,6 +25,7 @@ export default class CheckoutProcess {
       const quantity = item.Result.Quantity || 1;
       return total + (item.Result.FinalPrice * quantity); // Sum the total price of items in the cart
     }, 0);
+
 
     // Display the item subtotal in the output section (e.g., '#subtotal')
     document.querySelector(this.outputSelector.subtotal).innerText = this.itemTotal.toFixed(2);
