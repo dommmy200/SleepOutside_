@@ -5,13 +5,13 @@ export default class ProductDetails {
     this.dataSource = dataSource; // Reference to the data source
   }
 
-  
+
   async init() {
     try {
       this.product = await this.dataSource.findProductById(this.productId);
       //console.log("Fetched product details:", this.product); // Log the fetched product details
       if (this.product) {
-        this.renderProductDetails(); 
+        this.renderProductDetails();
       } else {
         throw new Error("product not found")
       }
@@ -23,19 +23,32 @@ export default class ProductDetails {
   addToCart() {
     const cartItems = JSON.parse(localStorage.getItem("so-cart")) || []; // Get current cart or initialize an empty array
     const existingProductIndex = cartItems.findIndex(item => item.Result.Id === this.product.Result.Id); // Check if product exists
-  
+
     if (existingProductIndex !== -1) {
       // Product already exists in the cart, increase its quantity
       cartItems[existingProductIndex].Result.Quantity = (cartItems[existingProductIndex].Result.Quantity || 1) + 1;
     } else {
       // If product does not exist, add it to the cart
       this.product.Result.Quantity = 1;
-      cartItems.push(this.product); 
+      cartItems.push(this.product);
     }
-  
+
     localStorage.setItem("so-cart", JSON.stringify(cartItems));
     alert("Item added to cart");
-  
+
+    /*agregar funcionalidad al carrito*/
+    const cartIcon = document.getElementById("cart-icon");
+    console.log("Cart icon:", cartIcon); // Esto debería imprimir el ícono o null
+
+    if (cartIcon) {
+      cartIcon.classList.add("bounce");
+      setTimeout(() => {
+        cartIcon.classList.remove("bounce");
+      }, 500);
+    } else {
+      console.error("El ícono del carrito no se encontró en la página.");
+    }
+
     // Dispatch a custom event to notify the cart count has been updated
     window.dispatchEvent(new Event("cartUpdated"));
   }
@@ -44,7 +57,7 @@ export default class ProductDetails {
 
   renderProductDetails() {
     const productContainer = document.getElementById("product-detail");
-  
+
     if (this.product.Result) {
       // Extract relevant fields from the product
       const imageUrl = this.product.Result.Images.PrimaryLarge || "default-image.jpg"; // Use PrimaryLarge image
@@ -53,7 +66,7 @@ export default class ProductDetails {
       const finalPrice = this.product.Result.FinalPrice ? this.product.Result.FinalPrice.toFixed(2) : "N/A";
       const suggestedRetailPrice = this.product.Result.SuggestedRetailPrice ? this.product.Result.SuggestedRetailPrice.toFixed(2) : null;
       const isDiscounted = this.product.Result.FinalPrice < this.product.Result.SuggestedRetailPrice;
-  
+
       // Render the product details HTML
       productContainer.innerHTML = `
         <img
@@ -72,12 +85,12 @@ export default class ProductDetails {
         
         <button id="addToCart">Add to Cart</button>
       `;
-  
+
       // Add event listener for the "Add to Cart" button
       document.getElementById("addToCart").addEventListener("click", () => this.addToCart());
     } else {
       productContainer.innerHTML = "<p>Product not found.</p>";
     }
   }
-  
+
 }
