@@ -3,7 +3,6 @@ import ProductListing from "./ProductList.mjs";
 import { getParams } from "./utils.mjs";
 import Alert from "./alert";
 
-
 const category = getParams("category");
 
 // Display the category name

@@ -22,8 +22,8 @@ function initCommentsSystem(productId) {
   renderComments(productId);
 
   // Añadir el evento al formulario para enviar un nuevo comentario
-  const commentForm = document.getElementById('comment-form');
-  commentForm.addEventListener('submit', function (event) {
+  const commentForm = document.getElementById("comment-form");
+  commentForm.addEventListener("submit", function (event) {
     event.preventDefault(); // Evitar que el formulario recargue la página
     addComment(productId);
   });
@@ -31,13 +31,13 @@ function initCommentsSystem(productId) {
 
 // Función para renderizar los comentarios guardados
 function renderComments(productId) {
-  const commentsList = document.getElementById('comments-list');
+  const commentsList = document.getElementById("comments-list");
   const comments = getComments(productId); // Obtener comentarios guardados
 
-  commentsList.innerHTML = ''; // Limpiar la lista antes de renderizar
+  commentsList.innerHTML = ""; // Limpiar la lista antes de renderizar
 
-  comments.forEach(comment => {
-    const li = document.createElement('li');
+  comments.forEach((comment) => {
+    const li = document.createElement("li");
     li.textContent = comment;
     commentsList.appendChild(li);
   });
@@ -51,7 +51,7 @@ function getComments(productId) {
 
 // Función para añadir un nuevo comentario
 function addComment(productId) {
-  const commentText = document.getElementById('comment-text').value.trim();
+  const commentText = document.getElementById("comment-text").value.trim();
 
   if (commentText) {
     const comments = getComments(productId);
@@ -61,7 +61,7 @@ function addComment(productId) {
     localStorage.setItem(`comments_${productId}`, JSON.stringify(comments));
 
     // Limpiar el campo de texto
-    document.getElementById('comment-text').value = '';
+    document.getElementById("comment-text").value = "";
 
     // Volver a renderizar los comentarios
     renderComments(productId);

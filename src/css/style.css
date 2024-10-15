@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -620,7 +620,6 @@ button {
 
 /*añadiendo mobilidad al carrito*/
 @keyframes bounce {
-
   0%,
   100% {
     transform: translateY(0);
@@ -678,11 +677,9 @@ button {
   background-color: #525b0f;
 }
 
-
 #cart-icon.bounce {
   animation: bounce 0.5s ease;
 }
-
 
 /* Positioning the alert at the top on large screens */
 @media (min-width: 768px) {

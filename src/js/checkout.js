@@ -1,7 +1,6 @@
 import { alertMessage } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
-
 // Initialize the CheckoutProcess with key 'so-cart' and output selectors
 const checkout = new CheckoutProcess("so-cart", {
   subtotal: "#subtotal",

@@ -12,5 +12,3 @@ const productListing = new ProductListing("tents", dataSource, listElement);
 
 // Initialize the ProductListing to fetch data and render the product list
 productListing.init();
-
-
